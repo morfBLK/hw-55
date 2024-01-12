@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import  {useState} from 'react';
+import './App.css';
+import Burger from "./Burger/Burger";
+import {Ingredient} from "./types";
+import beefImage from './image/beef.png';
+import cheeseImage from './image/cheese.png';
+import lettuceImage from './image/lettuce.png';
+import baconImage from './image/bacon.png';
+import Component from "./Component/Component";
+
+
+const INGREDIENTS: Ingredient[] = [
+  {name: 'beef', ingredientPrice: 80, image: beefImage},
+  {name: 'cheese', ingredientPrice: 50, image: cheeseImage},
+  {name: 'lettuce', ingredientPrice: 10, image: lettuceImage},
+  {name: 'bacon', ingredientPrice: 60, image: baconImage},
+]
+
+const getBurger: string [] = [];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ingredientsPrint, setIngredientsPrint] = useState([
+    {name: 'beef', count: 0, id: 1},
+    {name: 'cheese', count: 0, id: 2},
+    {name: 'lettuce', count: 0, id: 3},
+    {name: 'bacon', count: 0, id: 4},
+  ])
+
+  const price = INGREDIENTS.reduce((acc, price) => {
+    ingredientsPrint.forEach(element => {
+      if (price.name === element.name) {
+        acc += price.ingredientPrice * element.count
+      }
+    })
+    return acc;
+  }, 30)
+
+  const amount = (index: number) => {
+    setIngredientsPrint(prev => prev.map((item) => {
+      return item.id === index + 1 ? {
+        ...item,
+        count: item.count + 1,
+      } : item;
+    }))
+    getBurger.push(ingredientsPrint[index].name);
+  }
+
+  const deleteAmount = (index: number) => {
+    setIngredientsPrint(prev => prev.map((item)=>{
+      return item.id === index + 1 && item.count ? {
+        ...item,
+        count: item.count - 1,
+      } : item;
+    }))
+
+    const myIndex = getBurger.indexOf(ingredientsPrint[index].name);
+    if (myIndex !== -1) {
+      getBurger.splice(myIndex, 1);
+    }
+  }
+
+  const printIngredients = INGREDIENTS.map((one) => {
+    const index = INGREDIENTS.indexOf(one);
+    return (
+      <Component Component={one} amount={ingredientsPrint[index].count}
+                 onClickAdd={() => amount(index)} key={index} onClickDelete={() => deleteAmount(index)}/>
+    )
+  })
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className={'ingredient-box'}>
+        {printIngredients}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className='burger-box'>
+        <Burger ingredientsBurger={getBurger} price={price}/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App

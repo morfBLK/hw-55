@@ -1,0 +1,29 @@
+img {
+    width: 100px;
+    height: 100px;
+
+}
+
+.Component-box {
+    display: flex;
+    align-items: center;
+
+}
+
+.btn-remove {
+    width: 70px;
+    height: 70px;
+    background: url(../image/remove.png) no-repeat center;
+    background-size: cover;
+    display: block;
+
+}
+
+.btn-add {
+    width: 70px;
+    height: 70px;
+    background: url(../image/add.png) no-repeat center;
+    background-size: cover;
+    display: block;
+
+}
