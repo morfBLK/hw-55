@@ -18,7 +18,7 @@ const INGREDIENTS: Ingredient[] = [
 
 const getBurger: string [] = [];
 
-function App() {
+const App = () => {
   const [ingredientsPrint, setIngredientsPrint] = useState([
     {name: 'beef', count: 0, id: 1},
     {name: 'cheese', count: 0, id: 2},
@@ -77,6 +77,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App
+export default App;

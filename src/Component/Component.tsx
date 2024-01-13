@@ -1,6 +1,6 @@
 import React from 'react';
 import {Ingredient} from "../types";
-import './Component.css'
+import './Component.css';
 
 interface Props {
   Component:Ingredient;

@@ -23,7 +23,6 @@ img {
     background: url(../image/remove.png) no-repeat center;
     background-size: cover;
     display: block;
-
 }
 
 .btn-add {
@@ -32,5 +31,4 @@ img {
     background: url(../image/add.png) no-repeat center;
     background-size: cover;
     display: block;
-
 }
