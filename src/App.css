@@ -1,0 +1,26 @@
+body {
+    background: url("https://as2.ftcdn.net/v2/jpg/02/58/69/81/1000_F_258698167_rPausS45PIUX71fDDXEYOHAO2WgGrhcZ.jpg");
+    background-size: cover;
+}
+
+.burger-box {
+    width: 60%;
+    border: 8px solid #000000;
+    border-radius: 25px;
+    margin: 10px;
+    background: #a6a4a4;
+}
+
+.ingredient-box {
+    width: 35%;
+}
+
+.App {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(138, 117, 117);
+    margin: 200px;
+    border-radius: 25px;
+    color: white;
+
+}

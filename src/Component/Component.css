@@ -1,12 +1,19 @@
 img {
+    border-radius: 25px;
     width: 100px;
     height: 100px;
+
 
 }
 
 .Component-box {
     display: flex;
     align-items: center;
+    width: 100%;
+    border: 5px solid #000000;
+    border-radius: 25px;
+    justify-content: space-around;
+    margin: 20px;
 
 }
 
